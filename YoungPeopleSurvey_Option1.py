@@ -167,7 +167,7 @@ def classifier_train_predict(X_train, y_train, X_test, y_test) :
         print (i," Accuracy Score: ",accuracy_score(y_test, predicted))
         cnf_matrix = confusion_matrix(y_test, predicted)
         print()
-        plotConfusionMatrix(cnf_matrix, i)
+        Visualization.plotConfusionMatrix(cnf_matrix, i)
         
 
 
@@ -188,7 +188,7 @@ def votingClassifier(X_train, y_train, X_test, y_test):
     print("Accuracy Score of Voting Classifier: ",accuracy_score(y_test, y_pred))
     cnf_matrix = confusion_matrix(y_test, y_pred)
     print()
-    plotConfusionMatrix(cnf_matrix, 'voting classifier')
+    Visualization.plotConfusionMatrix(cnf_matrix, 'voting classifier')
 
 
 # Tuning the hyperparameters of SVC using GridSearchCV
@@ -224,7 +224,7 @@ def tuneSVC(X_train_selected, y_train, X_test_selected, y_test):
     print("Accuracy Score of SVC with hyperparameters tuned: ",accuracy_score(y_test, predicted))
     cnf_matrix = confusion_matrix(y_test, predicted)
     print()
-    plotConfusionMatrix(cnf_matrix, 'Tuned SVC')
+    Visualization.plotConfusionMatrix(cnf_matrix, 'Tuned SVC')
 
 
 if __name__ == "__main__" :
@@ -232,7 +232,7 @@ if __name__ == "__main__" :
     columns_file_path = argv[2]
     df = readData(data_file_path, columns_file_path)
     df = preProcess(df)
-    visualizeRelations(df)
+    Visualization.visualizeRelations(df)
     df_encoded = EncodeCategoricalData(df)
     X, Y, X_train, X_test, y_train, y_test = getTrainTest(df_encoded)
     X_train_selected, X_test_selected = doFeatureSelection(X_train,X_test)
